@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graph Display Prototype</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Additional styles if needed */
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto p-8">
+        <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="date">
+                    날짜 입력하기
+                </label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="date" type="date" value="2023-12-26">
+            </div>
+            <div class="flex items-center justify-between">
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+                    조회
+                </button>
+            </div>
+            <div class="mt-6">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="graph">
+                    
+                </label>
+                <!-- Placeholder for the graph -->
+                <div id="graph" class="h-64 bg-gray-200 rounded flex items-center justify-center">
+                    <!-- Graph content will go here -->
+                    <span class="text-gray-500">Graph will be displayed here</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // JavaScript for interactive elements if needed
+    </script>
+</body>
+</html>

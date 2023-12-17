@@ -1,0 +1,18 @@
+    <script src="{% static 'js/chartUtils.js' %}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            fetch('http://127.0.0.1:8000/check/chart_data/')  // 서버 주소를 넣어야 함
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`Network response was not ok: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    drawChartWithCsvData(document.getElementById('csvChart'), data.labels, data.data);
+                })
+                .catch(error => {
+                    console.error('Error during fetch:', error);
+                });
+        });
+    </script>

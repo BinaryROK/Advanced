@@ -1,0 +1,101 @@
+그림그리는코드
+
+<!-- check.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSV Data Graph</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .chart-container {
+            position: relative;
+            margin: auto;
+            height: 80vh;
+            width: 80vw;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="chart-container">
+        <canvas id="csvChart"></canvas>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            fetch('http://127.0.0.1:8000/check/chart_data/')  // 서버 주소를 넣어야 함
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`Network response was not ok: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    drawChartWithCsvData(document.getElementById('csvChart'), data.labels, data.data);
+                })
+                .catch(error => {
+                    console.error('Error during fetch:', error);
+                });
+        });
+
+        function drawChartWithCsvData(canvas, labels, data) {
+            const chartData = {
+                labels: labels,
+                datasets: [{
+                    label: 'Dataset from CSV',
+                    backgroundColor: 'rgba(99, 102, 241, 0.5)',
+                    borderColor: 'rgb(99, 102, 241)',
+                    data: data,
+                    fill: false,
+                    pointRadius: 5,
+                    pointHoverRadius: 8,
+                    showLine: true
+                }]
+            };
+
+            const config = {
+                type: 'line',
+                data: chartData,
+                options: {
+                    responsive: true,
+                    tooltips: {
+                        mode: 'index',
+                        intersect: false,
+                    },
+                    hover: {
+                        mode: 'nearest',
+                        intersect: true
+                    },
+                    scales: {
+                        xAxes: [{
+                            type: 'time',  // X축을 시간으로 설정
+                            time: {
+                                unit: 'hour',  // 시간 단위를 시간으로 설정
+                                displayFormats: {
+                                    hour: 'YYYY-MM-DD HH:mm:ss'  // 툴팁에 표시되는 시간 형식
+                                }
+                            },
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Time'
+                            }
+                        }],
+                        yAxes: [{
+                            display: true,
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Value'
+                            }
+                        }]
+                    }
+                }
+            };
+
+            const ctx = canvas.getContext('2d');
+            new Chart(ctx, config);
+        }
+    </script>
+</body>
+</html>
