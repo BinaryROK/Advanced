@@ -135,5 +135,5 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:8000",  # 로컬 환경에서 테스트할 때 필요
-    #"https://jinsoo.pythonanywhere.com",
+    "https://jinsoo.pythonanywhere.com",
 ]
