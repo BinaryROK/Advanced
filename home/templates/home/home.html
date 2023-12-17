@@ -31,7 +31,7 @@
         document.querySelector('form').addEventListener('submit', function (event) {
             event.preventDefault();  // 기본 동작 중단
             var selectedDate = document.getElementById('date-input').value;
-            var url = 'http://127.0.0.1:8000/two/' + selectedDate + '/';
+            var url = 'https://jinsoo.pythonanywhere.com/two/' + selectedDate + '/';
             window.open(url, '_blank');
         });
     </script>
