@@ -24,9 +24,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-idna$6uwk^she0v1vc)s&oqgkj#oa8=-)j6p7sqm!2k_wx5wq&"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['jinsoo.pythonanywhere.com']
+
+
 
 
 # Application definition
@@ -39,7 +41,6 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     'corsheaders',
     "django.contrib.staticfiles",
-    "check",
     "home",
     "two",
 ]
@@ -133,5 +134,6 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # settings.py
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:8000",  # 이 부분에 자신의 도메인을 추가하세요.
+    "http://localhost:8000",  # 로컬 환경에서 테스트할 때 필요
+    #"https://jinsoo.pythonanywhere.com",
 ]
