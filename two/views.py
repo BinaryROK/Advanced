@@ -24,7 +24,7 @@ def two(request, selected_date='default_date_value'):
 
 # 기존의 chart_data_2 함수 수정
 def chart_data_2(request, selected_date):
-    file_path = f'Data/zaraData/{selected_date}.csv'
+    file_path = f'Data/predicted/{selected_date}.csv'
 
     df = read_csv_file(file_path)
 
