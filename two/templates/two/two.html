@@ -1,4 +1,3 @@
-<!-- two/two.html -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,10 +26,10 @@
         <nav class="bg-blue-500 p-4 mb-4">
             <ul class="flex space-x-4 text-white">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ two_url }}">바라보다</a>
+                    <a class="nav-link" href="https://jinsoo.pythonanywhere.com/two/">바라보다</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ two_url }}">자라태양광</a>
+                    <a class="nav-link" href="https://jinsoo.pythonanywhere.com/two/">자라태양광</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Link</a>
@@ -41,11 +40,8 @@
         <form method="post" action="{% url 'home' %}">
             {% csrf_token %}
             <div class="flex flex-col items-center space-y-4">
-                <input name="date-input" id="date-input" type="date"
-                    class="border-2 border-gray-300 rounded-lg p-2 text-gray-700 focus:ring-blue-500 focus:border-blue-500"
-                    placeholder="날짜 선택하기">
-                <button type="button" onclick="submitForm()"
-                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                <input name="date-input" id="date-input" type="date" class="border-2 border-gray-300 rounded-lg p-2 text-gray-700 focus:ring-blue-500 focus:border-blue-500" placeholder="날짜 선택하기">
+                <button type="button" onclick="submitForm()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                     조회
                 </button>
             </div>
@@ -53,20 +49,18 @@
     </div>
     <div class="chart-container">
         <canvas id="csvChart"></canvas>
-        <canvas id="newCsvChart"></canvas>
     </div>
 
     <script>
         function submitForm() {
             var selectedDate = document.getElementById('date-input').value;
-            var url = '{{ two_url }}';
+            var url = '/two/' + selectedDate + '/';
             window.location.href = url;
         }
 
         document.addEventListener('DOMContentLoaded', function () {
             var selectedDate = "{{ selected_date }}";
-            var chartDataURL = '{{ new_chart_data_url }}';
-            var newChartDataURL = '{{ new_chart_data_url }}';  // 새로운 데이터의 차트 데이터 URL
+            var chartDataURL = '/two/' + selectedDate + '/chart_data/';
             fetch(chartDataURL)
                 .then(response => {
                     if (!response.ok) {
@@ -80,25 +74,15 @@
                 .catch(error => {
                     console.error('Error during fetch:', error);
                 });
-
-            // 새로운 차트 데이터 가져오기
-            fetch(newChartDataURL)
-                .then(response => response.json())
-                .then(newData => {
-                    drawChartWithCsvData(document.getElementById('newCsvChart'), newData.labels, newData.data, '예측발전량(kW)', 'rgb(99, 241, 100)');
-                })
-                .catch(error => {
-                    console.error('Error during fetch:', error);
-                });
         });
 
-        function drawChartWithCsvData(canvas, labels, data, label, borderColor) {
+        function drawChartWithCsvData(canvas, labels, data) {
             const chartData = {
                 labels: labels,
                 datasets: [{
-                    label: label,
-                    backgroundColor: `rgba(${borderColor}, 0.5)`,
-                    borderColor: borderColor,
+                    label: '발전량(kW)',
+                    backgroundColor: 'rgba(99, 102, 241, 0.5)',
+                    borderColor: 'rgb(99, 102, 241)',
                     data: data,
                     fill: false,
                     pointRadius: 5,
