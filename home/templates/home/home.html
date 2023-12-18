@@ -17,16 +17,8 @@
         <h1 class="text-2xl font-semibold text-gray-800 mb-4" style="text-align: center;">바라보다</h1>
         <form method="post" action="{% url 'home' %}">
             {% csrf_token %}
-            <div class="flex items-center space-x-4"> <!-- 수정된 부분: 'flex-col'에서 'flex'로 변경 -->
+            <div class="flex flex-col items-center space-y-4">
                 <input name="date-input" id="date-input" type="date" class="border-2 border-gray-300 rounded-lg p-2 text-gray-700 focus:ring-blue-500 focus:border-blue-500" placeholder="날짜 선택하기">
-                
-                <!-- 추가된 부분: 지역 선택 드롭다운 -->
-                <select name="location-input" id="location-input" class="border-2 border-gray-300 rounded-lg p-2 text-gray-700 focus:ring-blue-500 focus:border-blue-500">
-                    <option value="seoul">서울</option>
-                    <option value="busan">부산</option>
-                    <!-- 다른 지역 옵션들을 필요에 따라 추가 -->
-                </select>
-                
                 <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                     조회
                 </button>
@@ -34,13 +26,12 @@
         </form>
     </div>
 
-
     <script>
         // 수정된 부분: form submit 시의 처리를 위해 JavaScript 코드 수정
         document.querySelector('form').addEventListener('submit', function (event) {
             event.preventDefault();  // 기본 동작 중단
             var selectedDate = document.getElementById('date-input').value;
-            var url = 'http://127.0.0.1:8000/two/' + selectedDate + '/';
+            var url = 'https://jinsoo.pythonanywhere.com/two/' + selectedDate + '/';
             window.open(url, '_blank');
         });
     </script>
