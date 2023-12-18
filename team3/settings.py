@@ -101,7 +101,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 
-STATIC_ROOT="/home/leeyuhwan/Project/static/"
+STATIC_ROOT="/home/jinsoo/Advanced/static/"
 STATIC_ROOT= os.path.join(BASE_DIR, "static")
 
 # Internationalization
