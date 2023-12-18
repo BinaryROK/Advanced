@@ -10951,21 +10951,22 @@ footer.footer {
                             <form class="form-subscribe" id="contactForm" data-sb-form-api-token="API_TOKEN">
                                 <div class="row">
                                     <div class="col">
-                                        <form method="post" action="{% url 'home' %}" class="flex flex-col items-center space-y-4" id="myForm">
-                                            {% csrf_token %}
-                                            <input name="date-input" id="date-input" type="date" class="border-2 border-gray-300 rounded-lg p-2 text-gray-700 focus:ring-blue-500 focus:border-blue-500">
-                                            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-                                                조회
+                                      <form method="post" action="{% url 'home' %}">
+                                          {% csrf_token %}
+                                          <div class="flex flex-col items-center space-y-4"></div>
+                                            <input name="date-input" id="date-input" type="date" class="border-2 border-gray-300 rounded-lg p-2 text-gray-700 focus:ring-blue-500 focus:border-blue-500" placeholder="날짜 선택하기">
+                                            <button type="button" onclick="submitForm()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                                              조회
                                             </button>
+                                          </div>
                                         </form>
 
                                         <script>
-                                            document.getElementById('myForm').addEventListener('submit', function (event) {
-                                                event.preventDefault();  // 기본 동작 중단
-                                                var selectedDate = document.getElementById('date-input').value;
-                                                var url = 'https://jinsoo.pythonanywhere.com/two/' + selectedDate + '/';
-                                                window.open(url, '_blank');
-                                            });
+                                          function submitForm() {
+                                            var selectedDate = document.getElementById('date-input').value;
+                                            var url = '/two/' + selectedDate + '/';
+                                            window.location.href = url;
+                                          }
                                         </script>
                                     </div>
                                 </div>
