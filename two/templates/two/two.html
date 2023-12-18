@@ -2,58 +2,25 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
     <title>자라태양광</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-    <style>
-        .chart-container {
-            position: relative;
-            margin: auto;
-            height: 80vh;
-            width: 80vw;
-        }
-        body {
-            font-family: 'Open Sans', sans-serif;
-        }
-    </style>
-</head>
 
-<body class="bg-gray-100">
-    <div class="container mx-auto p-4">
-        <nav class="bg-blue-500 p-4 mb-4">
-            <ul class="flex space-x-4 text-white">
-                <li class="nav-item">
-                    <a class="nav-link" href="https://jinsoo.pythonanywhere.com/two/">바라보다</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="https://jinsoo.pythonanywhere.com/two/">자라태양광</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-            </ul>
-        </nav>
-        <h1 class="text-2xl font-semibold text-gray-800 mb-4" style="text-align: center;">바라보다</h1>
-        <form method="post" action="{% url 'home' %}">
-            {% csrf_token %}
-            <div class="flex flex-col items-center space-y-4">
-                <input name="date-input" id="date-input" type="date" class="border-2 border-gray-300 rounded-lg p-2 text-gray-700 focus:ring-blue-500 focus:border-blue-500" placeholder="날짜 선택하기">
-                <button type="button" onclick="submitForm()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-                    조회
-                </button>
-            </div>
-        </form>
-    </div>
-    <div class="chart-container">
-        <canvas id="csvChart"></canvas>
-    </div>
-    <div class="chart-container">
-        <canvas id="newCsvChart"></canvas>
-    </div>
+    <!-- Custom fonts for this template-->
+    <link href="css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
 
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <script>
         function submitForm() {
             var selectedDate = document.getElementById('date-input').value;
@@ -162,6 +129,154 @@
     new Chart(ctx, config);
 }
     </script>
+    <style>
+        .chart-container {
+            position: relative;
+            margin: auto;
+            height: 80vh;
+            width: 80vw;
+        }
+        body {
+            font-family: 'Open Sans', sans-serif;
+        }
+    </style>
+
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Navigation-->
+                <nav class="navbar navbar-light bg-light static-top">
+                    <div class="container">
+                        <a class="navbar-brand" href="#!">미래를 바라보다 [team 3]</a>
+                    </div>
+                </nav>
+                <div class="container-fluid">
+                    
+                    <h1 class="h3 mb-2 text-gray-800">태양광 발전량</h1>
+                            <form method="post" action="{% url 'home' %}">
+            {% csrf_token %}
+            <div class="flex flex-col items-center space-y-4">
+                <input name="date-input" id="date-input" type="date" class="border-2 border-gray-300 rounded-lg p-2 text-gray-700 focus:ring-blue-500 focus:border-blue-500" placeholder="날짜 선택하기">
+                <button type="button" onclick="submitForm()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                    조회
+                </button>
+            </div>
+        </form>
+                    <p class="mb-4">실제 발전량과 예측 발전량을 보여줍니다.</p>
+
+                    <!-- Content Row -->
+                    <div class="row">
+
+                        <div class="col-xl-8 col-lg-7">
+
+                            <!-- Area Chart -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">실제 발전량</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart-area">
+                                        <canvas id="csvChart"></canvas>
+                                    </div>
+                                    <hr>
+                                    전라남도 신안군 자라도의 실제 발전량
+                                </div>
+                            </div>
+
+                            <!-- Bar Chart -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">예측발전량</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart-bar">
+                                        <canvas id="newCsvChart"></canvas>
+                                    </div>
+                                    <hr>
+                                    전라남도 신안군 자라도의 예측발전량
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- 설명글 -->
+                        <div class="col-xl-4 col-lg-5">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">태양광 발전량</h6>
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">                                    
+                                    <hr>
+                                    전라남도 신안군 안좌면의 기상청 데이터를 이용합니다.<br>
+                                    위도 34시 45분, 경도 126시 7분에 위치한 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; BARABODA_TEAM3 2023</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="js/demo/chart-area-demo.js"></script>
+    <script src="js/demo/chart-pie-demo.js"></script>
+    <script src="js/demo/chart-bar-demo.js"></script>
+
 </body>
+
+<style>
+    .bg-lightblue {
+        background-color: #87CEEB; /* Use the HEX code for light sky-blue */
+        /* You can replace this HEX code with the desired color representation */
+    }
+</style>
 
 </html>
