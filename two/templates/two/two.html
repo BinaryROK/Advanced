@@ -63,6 +63,8 @@
 
         document.addEventListener('DOMContentLoaded', function () {
             var selectedDate = "{{ selected_date }}";
+
+            // 기존 차트 데이터 로드
             var chartDataURL = '/two/' + selectedDate + '/chart_data/';
             fetch(chartDataURL)
                 .then(response => {
@@ -77,9 +79,11 @@
                 .catch(error => {
                     console.error('Error during fetch:', error);
                 });
-                var newChartDataURL = '/two/' + selectedDate + '/new_chart_data/';
-             fetch(newChartDataURL)
-               .then(response => {
+
+            // 새로운 차트 데이터 로드
+            var newChartDataURL = '/two/' + selectedDate + '/new_chart_data/';
+            fetch(newChartDataURL)
+                .then(response => {
                     if (!response.ok) {
                         throw new Error(`Network response was not ok: ${response.status}`);
                     }
@@ -92,7 +96,6 @@
                     console.error('Error during fetch:', error);
                 });
         });
-
 
         function drawChartWithCsvData(canvas, labels, data) {
             const chartData = {
@@ -143,13 +146,12 @@
                                 labelString: '값'
                             },
                             ticks: {
-                                max: 16000  // y축 최대값 설정
+                                max: 16000
                             }
                         }]
                     }
                 }
             };
-
 
             const ctx = canvas.getContext('2d');
             new Chart(ctx, config);
