@@ -50,6 +50,9 @@
     <div class="chart-container">
         <canvas id="csvChart"></canvas>
     </div>
+    <div class="chart-container">
+        <canvas id="newCsvChart"></canvas>
+    </div>
 
     <script>
         function submitForm() {
@@ -74,7 +77,22 @@
                 .catch(error => {
                     console.error('Error during fetch:', error);
                 });
+                var newChartDataURL = '/two/' + selectedDate + '/new_chart_data/';
+             fetch(newChartDataURL)
+               .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`Network response was not ok: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    drawChartWithCsvData(document.getElementById('newCsvChart'), data.labels, data.data);
+                })
+                .catch(error => {
+                    console.error('Error during fetch:', error);
+                });
         });
+
 
         function drawChartWithCsvData(canvas, labels, data) {
             const chartData = {
