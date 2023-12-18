@@ -6,12 +6,7 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-]
 
-
-STATIC_URL = "/static/"
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
@@ -21,7 +16,7 @@ SECRET_KEY = "django-insecure-idna$6uwk^she0v1vc)s&oqgkj#oa8=-)j6p7sqm!2k_wx5wq&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['jinsoo.pythonanywhere.com', 'jinsoo.pythonanywhere.com']
+ALLOWED_HOSTS = ['*']
 
 
 
@@ -33,7 +28,6 @@ INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
-    
     "django.contrib.sessions",
     "django.contrib.messages",
     'corsheaders',
@@ -103,6 +97,12 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
+
+STATIC_ROOT="/home/leeyuhwan/Project/static/"
+STATIC_ROOT= os.path.join(BASE_DIR, "static")
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
@@ -119,7 +119,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-
+STATIC_URL = "/static/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
@@ -129,5 +129,5 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:8000",  # 로컬 환경에서 테스트할 때 필요
-    "https://jinsoo.pythonanywhere.com",
+    "*",
 ]
