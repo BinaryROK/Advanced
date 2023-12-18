@@ -1,6 +1,6 @@
-<!-- two.html -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,6 +16,7 @@
         }
     </style>
 </head>
+
 <body class="bg-gray-100">
     <div class="container mx-auto p-4">
         <h1 class="text-2xl font-semibold text-gray-800 mb-4" style="text-align: center;">바라보다</h1>
@@ -23,7 +24,7 @@
             {% csrf_token %}
             <div class="flex flex-col items-center space-y-4">
                 <input name="date-input" id="date-input" type="date" class="border-2 border-gray-300 rounded-lg p-2 text-gray-700 focus:ring-blue-500 focus:border-blue-500" placeholder="날짜 선택하기">
-                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                <button type="button" onclick="submitForm()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                     조회
                 </button>
             </div>
@@ -34,6 +35,12 @@
     </div>
 
     <script>
+        function submitForm() {
+            var selectedDate = document.getElementById('date-input').value;
+            var url = '/two/' + selectedDate + '/';
+            window.location.href = url;
+        }
+
         document.addEventListener('DOMContentLoaded', function () {
             var selectedDate = "{{ selected_date }}";
             var chartDataURL = '/two/' + selectedDate + '/chart_data/';
@@ -54,7 +61,7 @@
 
         function drawChartWithCsvData(canvas, labels, data) {
             const chartData = {
-                labels: labels,  // 시간 정보를 그대로 사용
+                labels: labels,
                 datasets: [{
                     label: '발전량(kW)',
                     backgroundColor: 'rgba(99, 102, 241, 0.5)',
@@ -82,11 +89,11 @@
                     },
                     scales: {
                         xAxes: [{
-                            type: 'time',  // X축을 시간으로 설정
+                            type: 'time',
                             time: {
-                                unit: 'minute',  // 시간 단위를 분으로 설정 (필요에 따라 조절)
+                                unit: 'minute',
                                 displayFormats: {
-                                    minute: 'HH:mm'  // 툴팁 등에 표시되는 시간 형식
+                                    minute: 'HH:mm'
                                 }
                             },
                             scaleLabel: {
@@ -110,4 +117,5 @@
         }
     </script>
 </body>
+
 </html>
