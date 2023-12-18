@@ -10951,38 +10951,22 @@ footer.footer {
                             <form class="form-subscribe" id="contactForm" data-sb-form-api-token="API_TOKEN">
                                 <div class="row">
                                     <div class="col">
-                                      <form method="post" action="{% url 'home' %}" id="myForm">
-                                        {% csrf_token %}
-                                        <div class="flex flex-col items-center space-y-4">
-                                            <input name="date-input" id="date-input" type="date" class="border-2 border-gray-300 rounded-lg p-2 text-gray-700 focus:ring-blue-500 focus:border-blue-500" placeholder="날짜 선택하기">
-                                            <button type="button" onclick="submitForm()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                                        <form method="post" action="{% url 'home' %}" class="flex flex-col items-center space-y-4" id="myForm">
+                                            {% csrf_token %}
+                                            <input name="date-input" id="date-input" type="date" class="border-2 border-gray-300 rounded-lg p-2 text-gray-700 focus:ring-blue-500 focus:border-blue-500">
+                                            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                                                 조회
                                             </button>
-                                        </div>
-                                    </form>
-                                    
-                                    <script>
-                                        function submitForm() {
-                                            document.getElementById('myForm').submit();
-                                        }
-                                    
-                                        document.addEventListener('DOMContentLoaded', function () {
-                                            var selectedDate = "{{ selected_date }}";
-                                            var chartDataURL = '/two/' + selectedDate + '/chart_data/';
-                                            fetch(chartDataURL)
-                                                .then(response => {
-                                                    if (!response.ok) {
-                                                        throw new Error(`Network response was not ok: ${response.status}`);
-                                                    }
-                                                    return response.json();
-                                                })
-                                                .then(data => {
-                                                    drawChartWithCsvData(document.getElementById('csvChart'), data.labels, data.data);
-                                                })
-                                                .catch(error => {
-                                                    console.error('Error during fetch:', error);
-                                                });
-                                        });
+                                        </form>
+
+                                        <script>
+                                            document.getElementById('myForm').addEventListener('submit', function (event) {
+                                                event.preventDefault();  // 기본 동작 중단
+                                                var selectedDate = document.getElementById('date-input').value;
+                                                var url = 'https://jinsoo.pythonanywhere.com/two/' + selectedDate + '/';
+                                                window.open(url, '_blank');
+                                            });
+                                        </script>
                                     </div>
                                 </div>
                                 <div class="d-none" id="submitSuccessMessage">
