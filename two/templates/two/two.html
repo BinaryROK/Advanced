@@ -115,19 +115,23 @@
                             },
                             scaleLabel: {
                                 display: true,
-                                labelString: 'Time'
+                                labelString: '시간'
                             }
                         }],
                         yAxes: [{
                             display: true,
                             scaleLabel: {
                                 display: true,
-                                labelString: 'Value'
+                                labelString: '값'
+                            },
+                            ticks: {
+                                suggestedMax: 16000  // y축 최대값 설정
                             }
                         }]
                     }
                 }
             };
+
 
             const ctx = canvas.getContext('2d');
             new Chart(ctx, config);
