@@ -10935,12 +10935,14 @@ footer.footer {
     </head>
     <body>
         <!-- Navigation-->
-        <nav class="navbar navbar-light bg-secondary static-top">
-          <div class="container justify-content-start">
-              <a class="navbar-brand" href="https://jinsoo.pythonanywhere.com/">미래를 바라보다 [team 3]</a>
+        <nav class="navbar navbar-light bg-white static-top">
+          <div class="container">
+              <a class="navbar-brand" href="https://jinsoo.pythonanywhere.com/">미래를 바라보다[Team3]</a>
               <a class="navbar-brand" href="https://jinsoo.pythonanywhere.com/two/">자라태양광</a>
+              <!-- ms-auto를 사용하여 맨 오른쪽으로 이동 -->
+              <div class="ms-auto"></div>
           </div>
-      </nav>
+        </nav>
         <!-- Masthead-->
         <header class="masthead" style="background-image: url('/static/assets/img/bg-masthead.jpg'); background-size: cover;">
             <div class="container position-relative">
@@ -10956,7 +10958,7 @@ footer.footer {
                                           {% csrf_token %}
                                           <div class="flex flex-col items-center space-y-4"></div>
                                             <input name="date-input" id="date-input" type="date" class="border-2 border-gray-300 rounded-lg p-2 text-gray-700 focus:ring-blue-500 focus:border-blue-500" placeholder="날짜 선택하기">
-                                            <button type="button" onclick="submitForm()" class="bg-gray-700 hover:bg-gray-900 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                                            <button type="button" onclick="submitForm()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" style="background-color: #3498db; border: none;">
                                               조회
                                             </button>
                                           </div>

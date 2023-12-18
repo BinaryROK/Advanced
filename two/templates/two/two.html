@@ -155,11 +155,14 @@
             <div id="content">
 
                 <!-- Navigation-->
-                <nav class="navbar navbar-light bg-light static-top">
+                <nav class="navbar navbar-light bg-white static-top">
                     <div class="container">
-                        <a class="navbar-brand" href="#!">미래를 바라보다 [team 3]</a>
+                        <a class="navbar-brand" href="https://jinsoo.pythonanywhere.com/">미래를 바라보다[Team3]</a>
+                        <a class="navbar-brand" href="https://jinsoo.pythonanywhere.com/two/">자라태양광</a>
+                        <!-- ms-auto를 사용하여 맨 오른쪽으로 이동 -->
+                        <div class="ms-auto"></div>
                     </div>
-                </nav>
+                  </nav>
                 <div class="container-fluid">
                     
                     <h1 class="h3 mb-2 text-gray-800">태양광 발전량</h1>
@@ -167,9 +170,9 @@
             {% csrf_token %}
             <div class="flex flex-col items-center space-y-4">
                 <input name="date-input" id="date-input" type="date" class="border-2 border-gray-300 rounded-lg p-2 text-gray-700 focus:ring-blue-500 focus:border-blue-500" placeholder="날짜 선택하기">
-                <button type="button" onclick="submitForm()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                <button type="button" onclick="submitForm()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" style="background-color: #3498db; border: none;">
                     조회
-                </button>
+                  </button>
             </div>
         </form>
                     <p class="mb-4">실제 발전량과 예측 발전량을 보여줍니다.</p>
