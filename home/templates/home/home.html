@@ -25,12 +25,18 @@
       });
 
           // Projects 메뉴 클릭 시 이벤트 핸들러
+          document.addEventListener('DOMContentLoaded', function () {
     const projectsMenu = document.getElementById('projects');
-    projectsMenu.addEventListener('click', function () {
-        const selectedDate = getToday();
-        const url = 'https://jinsoo.pythonanywhere.com/two/' + selectedDate + '/';
-        window.location.href = url;
-    });
+    if (projectsMenu) {
+        projectsMenu.addEventListener('click', function () {
+            const selectedDate = getToday();
+            const url = 'https://jinsoo.pythonanywhere.com/two/' + selectedDate + '/';
+            window.location.href = url;
+        });
+    } else {
+        console.error("Element with id 'projects' not found");
+    }
+});
     
     
     
