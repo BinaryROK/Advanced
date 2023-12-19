@@ -9,3 +9,5 @@ urlpatterns = [
 
     path('', two, {'selected_date': ''}, name='home'),  # 디폴트 값 설정
 ]
+
+

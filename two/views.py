@@ -25,30 +25,23 @@ def two(request, selected_date='default_date_value'):
 
 def chart_data_2(request, selected_date):
     file_path = f'Data/zaraData/{selected_date}.csv'
-
     df = read_csv_file(file_path)
-
     labels = df['time'].tolist()
     data = df['amount'].tolist()
     chart_data = {
         'labels': labels,
         'data': data,
     }
-
     return JsonResponse(chart_data)
-
 def new_chart_data(request, selected_date):
     file_path = f'Data/predicted/{selected_date}.csv'
-
     df = read_csv_file(file_path)
-
     labels = df['time'].tolist()
     data = df['amount'].tolist()
     chart_data = {
         'labels': labels,
         'data': data,
     }
-
     return JsonResponse(chart_data)
 
 
