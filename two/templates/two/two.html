@@ -10947,9 +10947,10 @@
                 var url = '/two/' + selectedDate + '/';
                 window.location.href = url;
             }
-    
+            
             document.addEventListener('DOMContentLoaded', function () {
                 var selectedDate = "{{ selected_date }}";
+                document.getElementById('selectedDateText').innerText = '선택한 날짜: ' + selectedDate;
     
                 // 기존 차트 데이터 로드
                 var chartDataURL = '/two/' + selectedDate + '/chart_data/';
