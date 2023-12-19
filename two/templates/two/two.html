@@ -10991,7 +10991,7 @@
         const chartData = {
             labels: labels,
             datasets: [{
-                label: '발전량(kW)',
+                label: '발전량(kWh)',
                 backgroundColor: 'rgba(99, 102, 241, 0.5)',
                 borderColor: 'rgb(99, 102, 241)',
                 data: data,
@@ -11004,7 +11004,7 @@
     
         // 수정된 부분: 두 번째 차트의 label 변경
         if (canvas.id === 'newCsvChart') {
-            chartData.datasets[0].label = '예측값(kW)';
+            chartData.datasets[0].label = '예측값(kWh)';
         }
     
         const config = {
@@ -11224,7 +11224,7 @@
                                     [최신화된 기상데이터가 발표될때마다 예측데이터도 최신화 됩니다]<br>
                                     <br>
                                     X축은 00시부터 23시까지 1시간 단위로 구성되어 있으며<br>
-                                    Y축은 발전량이 kW단위로 표시됩니다<br>
+                                    Y축은 발전량이 kWh단위로 표시됩니다<br>
 
                                 </div>
                             </div>
