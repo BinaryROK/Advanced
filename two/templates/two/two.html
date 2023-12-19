@@ -10950,7 +10950,7 @@
             
             document.addEventListener('DOMContentLoaded', function () {
                 var selectedDate = "{{ selected_date }}";
-                document.getElementById('selectedDateText').innerText = '선택한 날짜: ' + selectedDate;
+                document.getElementById('selectedDateText').innerText = selectedDate;
     
                 // 기존 차트 데이터 로드
                 var chartDataURL = '/two/' + selectedDate + '/chart_data/';
@@ -11138,7 +11138,10 @@
 
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">예측발전량</h6>
+                                    <div class="d-flex justify-content-between">
+                                        <h6 class="m-0 font-weight-bold text-primary">예측 발전량</h6>
+                                        <p id="selectedDateText" class="m-0 font-weight-bold text-primary"></p>
+                                    </div>
                                 </div>
                                 <div class="card-body">
                                     <div class="chart-area">
