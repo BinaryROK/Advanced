@@ -2,6 +2,8 @@
 <html lang="en">
     <head>
       <script>
+        
+
         document.addEventListener('DOMContentLoaded', function () {
           // 오늘 날짜를 가져오기 위한 함수
           function getToday() {
@@ -21,6 +23,14 @@
           const dateInput = document.getElementById('date-input');
           dateInput.value = getToday();
       });
+
+          // Projects 메뉴 클릭 시 이벤트 핸들러
+    const projectsMenu = document.getElementById('projects');
+    projectsMenu.addEventListener('click', function () {
+        const selectedDate = getToday();
+        const url = 'https://jinsoo.pythonanywhere.com/two/' + selectedDate + '/';
+        window.location.href = url;
+    });
     
     
     
@@ -30,6 +40,8 @@
       window.location.href = url;
     }
   </script>
+
+
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />

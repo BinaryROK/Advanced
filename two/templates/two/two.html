@@ -11057,19 +11057,60 @@
     }
         </script>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var selectedDate = "{{ selected_date }}";
-        document.getElementById('date-input').value = selectedDate;
-    });
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                var selectedDate = "{{ selected_date }}";
+                document.getElementById('date-input').value = selectedDate;
+            });
 
-    function submitForm() {
+            function submitForm() {
+                var selectedDate = document.getElementById('date-input').value;
+                var url = '/two/' + selectedDate + '/';
+                window.location.href = url;
+            }
+        </script>
+
+
+
+        <script>
+                
+
+          document.addEventListener('DOMContentLoaded', function () {
+            // 오늘 날짜를 가져오기 위한 함수
+            function getToday() {
+                const today = new Date();
+                const year = today.getFullYear();
+                let month = today.getMonth() + 1;
+                let day = today.getDate();
+
+                // 한 자리 숫자인 경우 앞에 0 추가
+                month = month < 10 ? '0' + month : month;
+                day = day < 10 ? '0' + day : day;
+
+                return `${year}-${month}-${day}`;
+            }
+
+            // 날짜 입력 필드에 오늘 날짜 설정
+            const dateInput = document.getElementById('date-input');
+            dateInput.value = getToday();
+        });
+
+            // Projects 메뉴 클릭 시 이벤트 핸들러
+        const projectsMenu = document.getElementById('projects');
+        projectsMenu.addEventListener('click', function () {
+          const selectedDate = getToday();
+          const url = 'https://jinsoo.pythonanywhere.com/two/' + selectedDate + '/';
+          window.location.href = url;
+        });
+
+
+
+        function submitForm() {
         var selectedDate = document.getElementById('date-input').value;
         var url = '/two/' + selectedDate + '/';
         window.location.href = url;
-    }
-</script>
-
+        }
+        </script>
 
 
 

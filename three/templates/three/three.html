@@ -16,6 +16,37 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="/static/three/css/styles.css" rel="stylesheet" />
+        <script>
+        
+
+            document.addEventListener('DOMContentLoaded', function () {
+              // 오늘 날짜를 가져오기 위한 함수
+              function getToday() {
+                  const today = new Date();
+                  const year = today.getFullYear();
+                  let month = today.getMonth() + 1;
+                  let day = today.getDate();
+    
+                  // 한 자리 숫자인 경우 앞에 0 추가
+                  month = month < 10 ? '0' + month : month;
+                  day = day < 10 ? '0' + day : day;
+    
+                  return `${year}-${month}-${day}`;
+              }
+    
+              // 날짜 입력 필드에 오늘 날짜 설정
+              const dateInput = document.getElementById('date-input');
+              dateInput.value = getToday();
+          });
+    
+              // Projects 메뉴 클릭 시 이벤트 핸들러
+        const projectsMenu = document.getElementById('projects');
+        projectsMenu.addEventListener('click', function () {
+            const selectedDate = getToday();
+            const url = 'https://jinsoo.pythonanywhere.com/two/' + selectedDate + '/';
+            window.location.href = url;
+        });
+      </script>
 
 
 
@@ -137,7 +168,7 @@
                                         </div>
                                         <div class="row row-cols-1 row-cols-md-3">
                                             <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">Crawling</div></div>
-                                            <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">Django</div></div>
+                                            <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">Data Processing</div></div>
                                             <div class="col"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">User Interface Design</div></div>
                                         </div>
                                     </div>
