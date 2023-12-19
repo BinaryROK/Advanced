@@ -1,8 +1,6 @@
-# three/urls.py
+# three/views.py
 
-from django.urls import path
-from . import views
+from django.shortcuts import render
 
-urlpatterns = [
-    path('', views.three_view, name='three_view'),
-]
+def three_view(request):
+    return render(request, 'three/three.html')

@@ -1,6 +1,8 @@
+# three/urls.py
+
 from django.urls import path
-from .views import two, chart_data_2, new_chart_data
+from . import views
 
 urlpatterns = [
-    
+    path('', views.three_view, name='three_view'),
 ]
