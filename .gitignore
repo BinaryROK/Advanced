@@ -6,3 +6,5 @@ crawl/
 template_save/
 
 pred/
+
+API_CSV_pred/
