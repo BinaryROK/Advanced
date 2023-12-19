@@ -8,3 +8,6 @@ def home(request):
         return HttpResponseRedirect(reverse('two', args=[selected_date]))
 
     return render(request, 'home/home.html')
+
+
+

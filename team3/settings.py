@@ -103,6 +103,8 @@ STATICFILES_DIRS = [
 ]
 
 STATIC_ROOT="/home/jinsoo/Advanced/static/"
+
+
 STATIC_ROOT= os.path.join(BASE_DIR, "static")
 
 # Internationalization

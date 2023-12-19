@@ -50,3 +50,5 @@ def new_chart_data(request, selected_date):
     }
 
     return JsonResponse(chart_data)
+
+
