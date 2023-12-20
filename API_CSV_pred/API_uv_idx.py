@@ -34,7 +34,7 @@ def get_and_save_uv_data(base_date, base_time):
                 time_values = {f"h{i}": item[f"h{i}"] for item in uv_items for i in range(0, 76, 3)}
 
                 # Specify the CSV file name
-                csv_file = r'C:\Team3\API_CSV\uv_data_raw.csv'
+                csv_file = r'D:\Advanced\API_CSV_pred\uv_data_raw.csv'
 
                 # Define the order of columns for the CSV file
                 header = ['time'] + [f"h{i}" for i in range(0, 76, 3)]

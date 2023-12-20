@@ -52,7 +52,8 @@ class SunDataRequest:
 def get_and_save_weather_data(weather_data):
     # API_weather 모듈의 get_weather_data와 save_to_csv 함수 호출
     header, data_rows = API_weather.get_weather_data(weather_data.base_date, weather_data.base_time, weather_data.nx, weather_data.ny)
-
+    print(header)
+    print(data_rows)
     if header is not None and data_rows is not None:
         API_weather.save_to_csv(header, data_rows, weather_data.csv_file)
 
@@ -70,7 +71,7 @@ def main():
 
     # 날씨 데이터를 가져오기 위한 WeatherData 객체 생성
     ################## base_date='20231217'라면 12월 18일 00시부터 20일 23시까지의 데이터가 받아와짐 뒷부분 불필요한 데이터는 합칠때 자름 ############
-    weather_data = WeatherData(base_date=one_day_before_str, base_time='2300', nx='45', ny='65', csv_file='weather_data_1.csv')
+    weather_data = WeatherData(base_date=one_day_before_str, base_time='0500', nx='45', ny='65', csv_file='weather_data_1.csv')
 
     # get_and_save_weather_data 함수 호출
     get_and_save_weather_data(weather_data)
@@ -85,7 +86,7 @@ def main():
     uv_data = UVData(base_date=input_date_str, base_time='00')
     get_and_save_uv_data(uv_data.base_date, uv_data.base_time)
 
-    process_uv_data_1(input_file_path=r'uv_data_raw.csv', output_file_path=r'uv_idx_3time.csv')
+    process_uv_data_1(input_file_path=r'D:\Advanced\API_CSV_pred\uv_data_raw.csv', output_file_path=r'uv_idx_3time.csv')
 
     process_uv_data_2(input_csv_path=r'uv_idx_3time.csv', output_csv_path=r'uv_idx_final.csv')
 
