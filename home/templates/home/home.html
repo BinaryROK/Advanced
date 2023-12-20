@@ -48,10 +48,10 @@
   </script>
 
 <script>
-    function redirectToInstagram(username) {
-        var instagramURL = 'https://www.instagram.com/' + username + '/';
-        window.location.href = instagramURL;
-    }
+        function redirectToInstagram(username) {
+            var instagramURL = 'https://www.instagram.com/' + username + '/';
+            window.open(instagramURL, '_blank');
+        }
 </script>
 
 
@@ -199,12 +199,11 @@
                         </div>
                     </div>
                     <div class="col-lg-4">
-                        <div class="testimonial-item mx-auto mb-5 mb-lg-0">
-                            <div class="testimonial-item mx-auto mb-5 mb-lg-0" onclick="redirectToInstagram('kyeoni__')">
-                                <img class="img-fluid rounded-circle mb-3" src="/static/assets/img/testimonials-2.jpg" alt="..." />
-                                <h5>류기연</h5>
-                                <p class="font-weight-light mb-0">"최첨단 실시간 자동예측 기술과 높은 정확도의 예측모델로, 에너지 생산과 효율성을 혁신적으로 리드합니다."</p>
-                            </div>
+                        <div class="testimonial-item mx-auto mb-5 mb-lg-0" onclick="redirectToInstagram('kyeoni__')">
+                            <img class="img-fluid rounded-circle mb-3" src="/static/assets/img/testimonials-2.jpg" alt="..." />
+                            <h5>류기연</h5>
+                            <p class="font-weight-light mb-0">"최첨단 실시간 자동예측 기술과 높은 정확도의 예측모델로, 에너지 생산과 효율성을 혁신적으로 리드합니다."</p>
+                        </div>
                     </div>
                     <div class="col-lg-4">
                         <div class="testimonial-item mx-auto mb-5 mb-lg-0" onclick="redirectToInstagram('binary__2')">
